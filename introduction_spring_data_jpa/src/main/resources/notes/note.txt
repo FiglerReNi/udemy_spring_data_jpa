@@ -1,0 +1,26 @@
+https://springframework.guru/
+https://springframework.guru/spring-data-jpa-120-intellij-trial/
+
+@NoRepositoryBean
+  https://wesome.org/norepositorybean
+
+@Autowired
+  Konstruktor alapú injektálásnál elhagyható az újabb spring változatokban.
+
+Adattípusok:
+	ansi sql: https://www.journaldev.com/16774/sql-data-types
+	mysql: https://dev.mysql.com/doc/refman/8.0/en/string-types.html
+	hibernate, jdbc: https://docs.jboss.org/hibernate/orm/5.0/mappingGuide/en-US/html/ch03.html
+
+Tesztek:
+  	• @SpringBootTest
+  		  A teljes alkalmazás context-et tudjuk használni a teszt osztályban a segítségével, viszont nagy alkalmazásnál mindent behúzva lassabb lesz. Ezért be lehet húzni csak részleteket a context-ből, ami az adott teszt osztályhoz kell.
+  	• @DataJpaTest
+  		  Ezzel csak az adatbázis műveletekhez szükséges minimális context-et húzzuk be.
+  		  Ehhez @ComponentScan-el adhatunk hozzá plusz beaneket egyedileg.
+  	• A Spring Boot-ban a tesztek transactional context-ben futnak. Vagyis minden teszt külön tranzakció adatbázisban, és roll back a vége.
+  	    Ezen lehet módosítani, hogy valóban megtörténjenek a dolgok és ott is maradjon vagyis commit legyen a vége:
+  		    @Rollback(value=false)
+  		    @Comit
+  	• A tesztek alapból random sorrendben futhatnak le, ezen lehet módosítani és fix sorrendet beállítani.
+
