@@ -18,7 +18,7 @@ import org.springframework.test.annotation.Commit;
   DataInitializer osztályt nem, tehát az adatbázis üres lenne a teszteléskor*/
 @DataJpaTest
 /*Ezzel be lehet húzni más bean-eket is egyesével, amik az adott package osztályaiban vannak*/
-@ComponentScan(basePackages = {"hu.application.bootstrap"})
+@ComponentScan(basePackages = {"hu.hibernatewithmysql.bootstrap"})
 public class SpringBootJpaH2Test {
 
     @Autowired

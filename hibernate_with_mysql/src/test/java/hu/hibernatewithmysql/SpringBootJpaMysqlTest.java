@@ -17,7 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 @DataJpaTest
 //Ezzel kapcsoljuk ki az automatikus H2 használatot
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-@ComponentScan(basePackages = {"hu.application.bootstrap"})
+@ComponentScan(basePackages = {"hu.hibernatewithmysql.bootstrap"})
 public class SpringBootJpaMysqlTest {
 
     @Autowired
