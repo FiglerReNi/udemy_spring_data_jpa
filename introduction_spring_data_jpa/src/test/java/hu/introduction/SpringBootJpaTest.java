@@ -1,9 +1,9 @@
-package hu.application;
+package hu.introduction;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import hu.application.domain.Book;
-import hu.application.repository.BookRepository;
+import hu.introduction.domain.Book;
+import hu.introduction.repository.BookRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,14 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 /*Ezzel az osztály csak az adatbázis műveletekhez szükséges contextet húzza be, ezért a
   DataInitializer osztályt nem, tehát az adatbázis üres lenne a teszteléskor*/
 @DataJpaTest
 /*Ezzel be lehet húzni más bean-eket is egyesével, amik az adott package osztályaiban vannak*/
-@ComponentScan(basePackages = {"hu.application.bootstrap"})
+@ComponentScan(basePackages = {"hu.introduction.bootstrap"})
 public class SpringBootJpaTest {
 
     @Autowired

@@ -1,8 +1,8 @@
-package hu.application;
+package hu.hibernatewithmysql;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import hu.application.repository.BookRepository;
+import hu.hibernatewithmysql.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

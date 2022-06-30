@@ -1,9 +1,9 @@
-package hu.application;
+package hu.hibernatewithmysql;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import hu.application.domain.Book;
-import hu.application.repository.BookRepository;
+import hu.hibernatewithmysql.domain.Book;
+import hu.hibernatewithmysql.repository.BookRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

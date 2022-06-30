@@ -1,7 +1,7 @@
-package hu.application.bootstrap;
+package hu.introduction.bootstrap;
 
-import hu.application.domain.Book;
-import hu.application.repository.BookRepository;
+import hu.introduction.domain.Book;
+import hu.introduction.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

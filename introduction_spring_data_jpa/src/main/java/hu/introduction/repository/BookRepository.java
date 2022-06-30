@@ -1,6 +1,6 @@
-package hu.application.repository;
+package hu.introduction.repository;
 
-import hu.application.domain.Book;
+import hu.introduction.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {

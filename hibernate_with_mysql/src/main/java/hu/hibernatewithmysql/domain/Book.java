@@ -1,4 +1,4 @@
-package hu.application.domain;
+package hu.hibernatewithmysql.domain;
 
 import java.util.Objects;
 import javax.persistence.Entity;

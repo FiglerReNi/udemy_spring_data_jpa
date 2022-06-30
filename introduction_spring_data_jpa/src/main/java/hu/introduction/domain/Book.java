@@ -1,4 +1,4 @@
-package hu.application.domain;
+package hu.introduction.domain;
 
 import java.util.Objects;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package hu.application;
+package hu.hibernatewithmysql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

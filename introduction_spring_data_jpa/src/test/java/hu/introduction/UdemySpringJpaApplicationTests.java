@@ -1,8 +1,8 @@
-package hu.application;
+package hu.introduction;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import hu.application.repository.BookRepository;
+import hu.introduction.repository.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,7 +1,7 @@
-package hu.application.bootstrap;
+package hu.hibernatewithmysql.bootstrap;
 
-import hu.application.domain.Book;
-import hu.application.repository.BookRepository;
+import hu.hibernatewithmysql.domain.Book;
+import hu.hibernatewithmysql.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
