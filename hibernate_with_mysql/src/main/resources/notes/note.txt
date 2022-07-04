@@ -9,3 +9,10 @@ Adatszerkezet létrehozása:
       A jpa általi generálást ki kell kapcsolni hozzá:
         spring.jpa.defer-datasource-initialization=false
         spring.jpa.hibernate.ddl-auto=validate vagy none
+  MySQL esetén:
+    1.  JPA segítségével, annotációkkal
+    2.  Hibernate segítségével schema.sql alapján. Ha van ilyen a classpath-on a hibernate felismeri és lefuttatja.
+        A jpa általi generálást ki kell kapcsolni hozzá:
+          spring.jpa.defer-datasource-initialization=false
+          spring.jpa.hibernate.ddl-auto=validate vagy none
+          spring.sql.init.mode=always (ennek embedded a default értéke, ezért h2-nél nem kell külön beállítani, de külső adatbázisnál igen)
