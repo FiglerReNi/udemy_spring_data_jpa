@@ -1,5 +1,11 @@
 H2 MySQL kompatibilitás:
   Be lehet állítani, hogy a H2 a DDL és DDL-ek során a mysql specifikus sql utasításokat is értse ne csak az alap ANSI SQL-t.
-  Ilyen beállítási lehetőség a többi sql fajtára is van pl. postgreSQL, oracle stb
+  Ilyen beállítási lehetőség a többi sql fajtára is van pl. postgreSQL, oracle stb.
 
-
+Adatszerkezet létrehozása:
+  H2 esetén:
+  1.  JPA segítségével, annotációkkal
+  2.  Hibernate segítségével schema.sql alapján. Ha van ilyen a classpath-on a hibernate felismeri és lefuttatja.
+      A jpa általi generálást ki kell kapcsolni hozzá:
+        spring.jpa.defer-datasource-initialization=false
+        spring.jpa.hibernate.ddl-auto=validate vagy none
