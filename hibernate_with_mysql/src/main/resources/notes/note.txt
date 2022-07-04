@@ -1,3 +1,5 @@
-
+H2 MySQL kompatibilitás:
+  Be lehet állítani, hogy a H2 a DDL és DDL-ek során a mysql specifikus sql utasításokat is értse ne csak az alap ANSI SQL-t.
+  Ilyen beállítási lehetőség a többi sql fajtára is van pl. postgreSQL, oracle stb
 
 

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.Commit;
@@ -19,6 +20,9 @@ import org.springframework.test.annotation.Commit;
 @DataJpaTest
 /*Ezzel be lehet húzni más bean-eket is egyesével, amik az adott package osztályaiban vannak*/
 @ComponentScan(basePackages = {"hu.hibernatewithmysql.bootstrap"})
+/*Ez azért kell, mert különben a default h2 beállításokat használná a teszt a @DataJpaTest annotáció miatt, nem azt amit a properties-ben
+beállítottunk*/
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class SpringBootJpaH2Test {
 
     @Autowired

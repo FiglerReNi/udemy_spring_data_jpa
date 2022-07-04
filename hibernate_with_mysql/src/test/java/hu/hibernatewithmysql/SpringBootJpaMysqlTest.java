@@ -16,7 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 //Ez mindig a H2 adatbázist használja, ki kell kapcsolnunk, ahhoz, hogy működjön a local properties és a mysql adatbázis működjön
 @DataJpaTest
 //Ezzel kapcsoljuk ki az automatikus H2 használatot
-@AutoConfigureTestDatabase(replace = Replace.NONE)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ComponentScan(basePackages = {"hu.hibernatewithmysql.bootstrap"})
 public class SpringBootJpaMysqlTest {
 
