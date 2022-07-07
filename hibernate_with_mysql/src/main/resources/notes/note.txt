@@ -16,3 +16,26 @@ Adatszerkezet létrehozása:
           spring.jpa.defer-datasource-initialization=false
           spring.jpa.hibernate.ddl-auto=validate vagy none
           spring.sql.init.mode=always (ennek embedded a default értéke, ezért h2-nél nem kell külön beállítani, de külső adatbázisnál igen)
+
+Példa feladat esetei:
+  1. default
+     JPA annotációk alapján H2 adatbázisba mysql specifikus utasításokkal
+     application.properties
+     UdemySpringJpaApplication - futtatáshoz kell a h2 maven profil
+     SpringBootJpaH2Test.java
+  2. local
+     JPA annotációk alapján MySQL adatbázisba mysql specifikus utasításokkal
+     application-local.properties
+     UdemySpringJpaApplication
+     SpringBootJpaMysqlTest.java
+  3. developh2
+     sql script alapján H2 adatbázisba mysql specifikus utasításokkal
+     application-developh2.properties
+     UdemySpringJpaApplication - futtatáshoz kell a h2 maven profil
+     SpringBootHibernateH2Test.java
+     schema.sql
+  4. developmysql
+     sql script alapján MySQL adatbázisba mysql specifikus utasításokkal
+     application-developmysql.properties
+     UdemySpringJpaApplication
+     SpringBootHibernateMysqlTest
