@@ -1,0 +1,17 @@
+Liquibase link:
+  https://docs.liquibase.com/tools-integrations/maven/home.html
+  https://docs.liquibase.com/tools-integrations/maven/using-liquibase-and-maven-pom-file.html
+  https://docs.liquibase.com/tools-integrations/maven/commands/maven-generatechangelog.html
+
+Liquibase Maven plugin tudnivalók:
+  Adatok:
+    Az adatbázis url jelszó és felhasználó páros megadható a pluginon belül is a <configuration> tagen belül, de ezt éles környezetben nem tesszük.
+    Megadható property file-ból is, ami lehet a projekt mellett vagy a szerveren
+    Megadható környezeti változóból is
+  Dependency:
+    A pluginoknak saját dependency-jük van, tehát ha a pom-ba be van húzva a mysql connector, azt a plugin nem látja, be kell húznunk külön.
+    A pom dependency-k öröklik a parentben lévő verziókat, tehát a mysql connector a spring botban lévő version-t kapja automatikusan.
+    Azonban a pluginokban lévő dependency-k ezt nem öröklik, tehát meg kell adni nekik, de nem konkrétan a számot, hanem lehet a spring-boot parent pomban lévő version nevet:
+      <version>${mysql.version}</version>
+    A pom által használt versionoket megtaláljuk:
+      jobb klikk -> Maven -> Show Effective Pom
