@@ -51,17 +51,17 @@
           </dependency>
         </dependencies>
         <configuration>
-<!--          <url>jdbc:mysql://127.0.0.1:3306/books?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>-->
+      <!--<url>jdbc:mysql://127.0.0.1:3306/books?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>-->
           <propertyFile>target/classes/application.properties</propertyFile>
-          <outputChangeLogFile>src/main/liquibase/changelog.xml</outputChangeLogFile>
+          <outputChangeLogFile>src/main/resources/liquibase/changelog.xml</outputChangeLogFile>
           <changeSetAuthor>FReni</changeSetAuthor>
-          <changeLogSchemaName>books</changeLogSchemaName>
+          <changelogSchemaName>books</changelogSchemaName>
         </configuration>
       </plugin>
     </plugins>
-<!--    <filters>-->
-<!--      <filter>src/main/resources/filters/filter.properties</filter>-->
-<!--    </filters>-->
+    <filters>
+      <filter>src/main/resources/filters/filter.properties</filter>
+    </filters>
     <resources>
       <resource>
         <directory>src/main/resources</directory>

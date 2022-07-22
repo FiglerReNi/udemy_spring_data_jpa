@@ -2,6 +2,7 @@ Liquibase link:
   https://docs.liquibase.com/tools-integrations/maven/home.html
   https://docs.liquibase.com/tools-integrations/maven/using-liquibase-and-maven-pom-file.html
   https://docs.liquibase.com/tools-integrations/maven/commands/maven-generatechangelog.html
+  https://docs.liquibase.com/concepts/bestpractices.html
 
 Liquibase Maven plugin tudnivalók:
   Adatok:
@@ -15,3 +16,14 @@ Liquibase Maven plugin tudnivalók:
       <version>${mysql.version}</version>
     A pom által használt versionoket megtaláljuk:
       jobb klikk -> Maven -> Show Effective Pom
+
+Changelog File generálás:
+  Az adatbázis szerkezete generálható ki vele, ha pl új helyre akarjuk költöztetni, tehát a create table parancsok.
+  A liquibase pluginon belül a configuration-ban tudunk ehhez beállításokat megadni, pl hová generálja a file-t.
+  Illetve ezeket megadhatjuk az application.properties-en belül is, akár filteren keresztül, ha többször akarunk egy értéket használni.
+  A liquibase-hez az url filteren keresztül nem működik.
+
+Liquibase adatbázis vezérlés
+  Mappa szerkezet:
+
+
