@@ -3,6 +3,7 @@ Liquibase link:
   https://docs.liquibase.com/tools-integrations/maven/using-liquibase-and-maven-pom-file.html
   https://docs.liquibase.com/tools-integrations/maven/commands/maven-generatechangelog.html
   https://docs.liquibase.com/concepts/bestpractices.html
+  https://docs.liquibase.com/tools-integrations/springboot/springboot.html
 
 Liquibase Maven plugin tudnivalók:
   Adatok:
@@ -25,5 +26,8 @@ Changelog File generálás:
 
 Liquibase adatbázis vezérlés
   Mappa szerkezet:
+    Mindig van egy master file, amiben a changelog fileokat gyűjtjük egymás alatt. Az ebben lévő filok fognak lefutni a sorrendnek megfelelően.
+    Vagyis egy adatbázis módosításhoz kell csinálnunk egy changelog file-t, és ezt a file-t bele kell tennünk a masterbe is.
+
 
 
