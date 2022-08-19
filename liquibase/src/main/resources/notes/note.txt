@@ -4,6 +4,8 @@ Liquibase link:
   https://docs.liquibase.com/tools-integrations/maven/commands/maven-generatechangelog.html
   https://docs.liquibase.com/concepts/bestpractices.html
   https://docs.liquibase.com/tools-integrations/springboot/springboot.html
+  https://docs.liquibase.com/change-types/insert.html
+  https://docs.liquibase.com/change-types/sql.html
 
 Liquibase Maven plugin tudnivalók:
   Adatok:
@@ -24,10 +26,16 @@ Changelog File generálás:
   Illetve ezeket megadhatjuk az application.properties-en belül is, akár filteren keresztül, ha többször akarunk egy értéket használni.
   A liquibase-hez az url filteren keresztül nem működik.
 
-Liquibase adatbázis vezérlés
+Liquibase adatbázis vezérlés:
   Mappa szerkezet:
     Mindig van egy master file, amiben a changelog fileokat gyűjtjük egymás alatt. Az ebben lévő filok fognak lefutni a sorrendnek megfelelően.
     Vagyis egy adatbázis módosításhoz kell csinálnunk egy changelog file-t, és ezt a file-t bele kell tennünk a masterbe is.
+  Működés:
+    A hibernate ha talál schema.sql file-t, akkor azt fogja befuttatni, akkor is ha van liquibase, mert az lesz az erősebb.
+  SQL:
+    Az sql utasításokat írhatjuk:
+      xml nyelven, yaml myelven -> ezek előnye, hogy adatbázis független lesz, így lehet különböző környezetekbe futtatni őket, pl. ha váltunk mysql és postgresql között.
+      sql-ben akér xml-ben akár yaml file-ban, ilyenkor sql szerkezetet használunk, így viszont adatbázis specifikus lesz a file.
 
 
 

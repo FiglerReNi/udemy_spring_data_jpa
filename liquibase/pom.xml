@@ -35,6 +35,10 @@
       <artifactId>liquibase-core</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
@@ -61,7 +65,7 @@
         <configuration>
       <!--<url>jdbc:mysql://127.0.0.1:3306/books?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</url>-->
           <propertyFile>target/classes/application.properties</propertyFile>
-          <outputChangeLogFile>src/main/resources/liquibase/changelog.xml</outputChangeLogFile>
+          <outputChangeLogFile>src/main/resources/liquibase/generate/changelog.xml</outputChangeLogFile>
           <changeSetAuthor>FReni</changeSetAuthor>
           <changelogSchemaName>books</changelogSchemaName>
         </configuration>
