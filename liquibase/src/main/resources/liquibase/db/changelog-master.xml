@@ -6,4 +6,5 @@
   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
   <include  file="liquibase/db/changelog/baseline-changelog.xml"/>
   <include  file="liquibase/db/changelog/insert_hibernate_sequence_1.xml"/>
+  <include  file="liquibase/db/changelog/create_author.xml"/>
 </databaseChangeLog>
