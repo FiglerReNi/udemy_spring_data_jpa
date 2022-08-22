@@ -1,1 +1,44 @@
-
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="FReni" id="1661156568554-1">
+        <createTable tableName="author">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-2">
+        <createTable tableName="book">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="VARCHAR(255)"/>
+            <column name="publisher" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(250)"/>
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-3">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-4">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="author"/>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-5">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="book"/>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-6">
+        <createIndex indexName="fk_author_id_book" tableName="book">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="FReni" id="1661156568554-7">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="book" constraintName="fk_author_id_book" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="author"/>
+    </changeSet>
+</databaseChangeLog>
