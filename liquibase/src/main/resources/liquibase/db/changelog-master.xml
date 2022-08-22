@@ -7,4 +7,5 @@
   <include  file="liquibase/db/changelog/baseline-changelog.xml"/>
   <include  file="liquibase/db/changelog/insert_hibernate_sequence_1.xml"/>
   <include  file="liquibase/db/changelog/create_author.xml"/>
+  <include  file="liquibase/db/changelog/alter_book.xml"/>
 </databaseChangeLog>

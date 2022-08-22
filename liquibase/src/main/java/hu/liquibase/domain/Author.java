@@ -1,10 +1,12 @@
 package hu.liquibase.domain;
 
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +26,8 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
 
     @Override
     public boolean equals(Object o) {
