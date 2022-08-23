@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,8 @@ public class Book {
     private String title;
     private String isbn;
     private String publisher;
+    @ManyToOne
+    private Author author;
 
     @Override
     public boolean equals(Object o) {

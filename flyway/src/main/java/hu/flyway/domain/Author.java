@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +25,8 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
 
     @Override
     public boolean equals(Object o) {
