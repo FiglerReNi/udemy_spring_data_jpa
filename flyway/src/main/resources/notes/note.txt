@@ -1,0 +1,9 @@
+Flyway:
+  Dependency tudnivalók:
+    Kell hozzá dependency, aminek nem kell megadni a verzióját, mert örökli a spring boot parentből.
+  Működés:
+    A spring boot a flyway-hez alap esetben a resources/db/migration mappában keresi a futtatandó scripteket.
+    Ez felül is írható.
+  Fájlok elnevezése:
+    A flyway script file-ok elnevezése mindig nagy V-vel kezdődik, utána a sorszám, majd dupla __ és ezután a név amit szeretnénk adni
+    pl.: V1__create_book.sql

@@ -1,6 +1,6 @@
-package hu.liquibase.repository;
+package hu.flyway.repository;
 
-import hu.liquibase.domain.Book;
+import hu.flyway.domain.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
