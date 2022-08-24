@@ -5,5 +5,10 @@ Flyway:
     A spring boot a flyway-hez alap esetben a resources/db/migration mappában keresi a futtatandó scripteket.
     Ez felül is írható.
   Fájlok elnevezése:
-    A flyway script file-ok elnevezése mindig nagy V-vel kezdődik, utána a sorszám, majd dupla __ és ezután a név amit szeretnénk adni
+    A flyway script file-ok elnevezése mindig nagy V-vel kezdődik, utána a sorszám, majd dupla __ és ezután a név amit szeretnénk adni.
     pl.: V1__create_book.sql
+    Ez megváltoztatható konfigurációs beállításokkal.
+  Műveletek:
+    Lehet törölni az adatbázist, ugyanúgy ahogy a hibernate create-drop, ezt csak fejlesztői környezetben használjuk.
+    Kell hozzá egy konfigurációs osztály egy bean-el, itt nem csak a clean választható ki, hanem egyéb funkciói is a flywanek.
+    Például az info, a baseline stb.
