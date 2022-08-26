@@ -12,3 +12,15 @@ Flyway:
     Lehet törölni az adatbázist, ugyanúgy ahogy a hibernate create-drop, ezt csak fejlesztői környezetben használjuk.
     Kell hozzá egy konfigurációs osztály egy bean-el, itt nem csak a clean választható ki, hanem egyéb funkciói is a flywanek.
     Például az info, a baseline stb.
+  Vendor specifikus .sql:
+    Ha többféle adatbázis környezetünk van, az sql parancsok eltérőek lehetnek. Más a szintaktikája pl a postgreSql a MySql vagy a H2-nek.
+    A H2 esetében azonban be lehet állítani azt is az application.properties-ben, hogy használja a mysql utasításokat.
+    A flyway-ben a megfelelő adatbázis szerint elnevezett mappába rakhatjuk az ilyen sql-eket és lehet egy közös mappa is amibe az olyanok kerülnek ami minden környezetben lefut.
+    PL.:
+    db/migration/common
+    db/migration/h2
+    db/migration/mysql
+    Az application.properties-ben pedig be kell állítani, hogy milyen útvonalakat figyeljen a flyway.
+    A vendor szó helyére automatikusan behelyettesíti az adatbázis fajtát és azt a mappát futtatja + a közöseket.
+    spring.flyway.location=classpath:db/migration/common, db/migration/{vendor}
+
