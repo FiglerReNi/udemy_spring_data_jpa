@@ -3,6 +3,7 @@ package hu.hibernate_primary_keys;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import hu.hibernate_primary_keys.domain.Book;
+import hu.hibernate_primary_keys.repository.AuthorRepository;
 import hu.hibernate_primary_keys.repository.BookRepository;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -27,6 +28,8 @@ public class SpringBootJpaH2Test {
 
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    AuthorRepository authorRepository;
 
     @Commit
     //@Rollback(value = false)
@@ -36,7 +39,9 @@ public class SpringBootJpaH2Test {
 
         long countBefore = bookRepository.count();
         assertThat(countBefore).isEqualTo(2);
-        bookRepository.save(Book.builder().title("Test Three").isbn("333").publisher("Author Three").build());
+        bookRepository.save(
+                Book.builder().title("Test Three").isbn("333").publisher("Author Three").author(authorRepository.findByLastName("Three"))
+                        .build());
         long countAfter = bookRepository.count();
         assertThat(countBefore).isLessThan(countAfter);
 
