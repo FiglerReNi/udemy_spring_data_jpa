@@ -1,0 +1,7 @@
+Primary Key tudnivalók:
+  A GenerationType.IDENTITY a mysql auto_increment hibernate oldali megfelelője.
+  Hatékonyabb mintha a GenerationType.AUTO-t választjuk és hagyjuk, hogy a hibernate döntse el a GenerationType-ot.
+  Alapból ilyenkor a GenerationType.TABLE-t használja, amit a liquibase modulban is használtunk.
+  Az auto increment azért jobb mint a sequence table alapú, mert ha sok a tranzakció az adatbázis felé,
+  sokszor lesz lockolva a sequence tábla, amíg megtörténik az update-t és az érték kiolvasás. Ez a leglassabb opció.
+  Hatékony még a GenerationType.SEQUENCE is, de ez csak oracle adatbázissal működik.
