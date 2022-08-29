@@ -1,8 +1,10 @@
 package hu.hibernate_primary_keys.bootstrap;
 
 import hu.hibernate_primary_keys.domain.Author;
+import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.Book;
 import hu.hibernate_primary_keys.repository.AuthorRepository;
+import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
 import hu.hibernate_primary_keys.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +17,7 @@ public class DataInitializer implements CommandLineRunner {
 
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
+    private AuthorUuidStringRepository authorUuidStringRepository;
 
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
@@ -23,6 +26,10 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     public void setAuthorRepository(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
+    }
+    @Autowired
+    public void setAuthorUuidStringRepository(AuthorUuidStringRepository authorUuidStringRepository) {
+        this.authorUuidStringRepository = authorUuidStringRepository;
     }
 
     @Override
@@ -55,5 +62,9 @@ public class DataInitializer implements CommandLineRunner {
                     System.out.println("--------------------------");
                 }
         );
+
+        AuthorUuidString authorUuidString = AuthorUuidString.builder().firstName("Author").lastName("One").build();
+        AuthorUuidString savedAuthorUuidString = authorUuidStringRepository.save(authorUuidString);
+        System.out.println(savedAuthorUuidString.getId());
     }
 }
