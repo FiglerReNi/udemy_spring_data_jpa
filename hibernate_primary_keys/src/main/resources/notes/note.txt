@@ -5,3 +5,19 @@ Primary Key tudnivalók:
   Az auto increment azért jobb mint a sequence table alapú, mert ha sok a tranzakció az adatbázis felé,
   sokszor lesz lockolva a sequence tábla, amíg megtörténik az update-t és az érték kiolvasás. Ez a leglassabb opció.
   Hatékony még a GenerationType.SEQUENCE is, de ez csak oracle adatbázissal működik.
+
+UUID:
+  stringként tárolva:
+    több memóriát foglal, mint ha binary formában tároljuk, de így látni pontosan az értéket
+    A hibernate beépített generátorát használjuk, ez nem felel meg az RFC4122 standard-nek.
+    @Type annotáció mondja meg a hibernate-nek, hogy a uuid-ot stringként fogjuk tárolni és amikor kiolvassuk így vissza tudja alakítani a stringet UUID típussá.
+  binary-ben tárolva:
+    RFC4122 szabványnak megfelelő generátort használunk, ami elérhető a hibernate-ben is, csak felül kell definálni az alap működést.
+    Binary-ban tárolva sokkal kevesebb memóriát foglal a uuid.
+    Adatbázisban ez így nem lesz szépen olvasható, de egy select segítségével olvashatóvá tudjuk tenni:
+      SELECT HEX(id) FROM author_uuid_binary;
+
+@Column annotáció:
+  Ha nem a jpa csinálja az adatbázist, akkor ez arra jó, hogy amikor kiolvasunk az adatot, a hibernate jobban tudja a matchet megcsinálni az entityvel.
+
+

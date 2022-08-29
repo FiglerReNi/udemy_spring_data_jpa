@@ -1,9 +1,11 @@
 package hu.hibernate_primary_keys.bootstrap;
 
 import hu.hibernate_primary_keys.domain.Author;
+import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.Book;
 import hu.hibernate_primary_keys.repository.AuthorRepository;
+import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
 import hu.hibernate_primary_keys.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ public class DataInitializer implements CommandLineRunner {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
     private AuthorUuidStringRepository authorUuidStringRepository;
+    private AuthorUuidBinaryRepository authorUuidBinaryRepository;
 
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
@@ -30,6 +33,10 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     public void setAuthorUuidStringRepository(AuthorUuidStringRepository authorUuidStringRepository) {
         this.authorUuidStringRepository = authorUuidStringRepository;
+    }
+    @Autowired
+    public void setAuthorUuidBinaryRepository(AuthorUuidBinaryRepository authorUuidBinaryRepository) {
+        this.authorUuidBinaryRepository = authorUuidBinaryRepository;
     }
 
     @Override
@@ -66,5 +73,9 @@ public class DataInitializer implements CommandLineRunner {
         AuthorUuidString authorUuidString = AuthorUuidString.builder().firstName("Author").lastName("One").build();
         AuthorUuidString savedAuthorUuidString = authorUuidStringRepository.save(authorUuidString);
         System.out.println(savedAuthorUuidString.getId());
+
+        AuthorUuidBinary authorUuidBinary = AuthorUuidBinary.builder().firstName("Author").lastName("One").build();
+        AuthorUuidBinary savedAuthorUuidBinary = authorUuidBinaryRepository.save(authorUuidBinary);
+        System.out.println(savedAuthorUuidBinary.getId());
     }
 }
