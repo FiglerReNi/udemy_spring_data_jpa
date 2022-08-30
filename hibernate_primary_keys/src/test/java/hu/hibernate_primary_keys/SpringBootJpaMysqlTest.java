@@ -2,7 +2,12 @@ package hu.hibernate_primary_keys;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
+import hu.hibernate_primary_keys.domain.AuthorUuidString;
+import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
+import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
 import hu.hibernate_primary_keys.repository.BookRepository;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -21,7 +26,12 @@ public class SpringBootJpaMysqlTest {
 
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    AuthorUuidStringRepository authorUuidStringRepository;
+    @Autowired
+    AuthorUuidBinaryRepository authorUuidBinaryRepository;
 
+    @Order(1)
     @Test
     void testAmountOfBooks() {
 
@@ -29,4 +39,35 @@ public class SpringBootJpaMysqlTest {
         assertThat(countBefore).isEqualTo(2);
 
     }
+
+    @Order(2)
+    @Test
+    void testSaveAuthorUuidString(){
+
+       AuthorUuidString authorUuidString =
+               authorUuidStringRepository.save(AuthorUuidString.builder().firstName("Author").lastName("Two").build());
+       assertThat(authorUuidString).isNotNull();
+       assertThat(authorUuidString.getId()).isNotNull();
+
+       AuthorUuidString authorUuidStringFromDb = authorUuidStringRepository.getReferenceById(authorUuidString.getId());
+       assertThat(authorUuidStringFromDb).isNotNull();
+
+    }
+
+    @Order(3)
+    @Test
+    void testSaveAuthorUuidBinary(){
+
+        AuthorUuidBinary authorUuidBinary =
+                authorUuidBinaryRepository.save(AuthorUuidBinary.builder().firstName("Author").lastName("Two").build());
+        assertThat(authorUuidBinary).isNotNull();
+        assertThat(authorUuidBinary.getId()).isNotNull();
+
+        AuthorUuidBinary authorUuidBinaryFromDb = authorUuidBinaryRepository.getReferenceById(authorUuidBinary.getId());
+        assertThat(authorUuidBinaryFromDb).isNotNull();
+
+    }
+
+
+
 }
