@@ -2,8 +2,10 @@ package hu.hibernate_primary_keys;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import hu.hibernate_primary_keys.domain.AuthorNaturalKey;
 import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
+import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
 import hu.hibernate_primary_keys.repository.BookRepository;
@@ -30,6 +32,8 @@ public class SpringBootJpaMysqlTest {
     AuthorUuidStringRepository authorUuidStringRepository;
     @Autowired
     AuthorUuidBinaryRepository authorUuidBinaryRepository;
+    @Autowired
+    AuthorNaturalKeyRepository authorNaturalKeyRepository;
 
     @Order(1)
     @Test
@@ -45,7 +49,7 @@ public class SpringBootJpaMysqlTest {
     void testSaveAuthorUuidString(){
 
        AuthorUuidString authorUuidString =
-               authorUuidStringRepository.save(AuthorUuidString.builder().firstName("Author").lastName("Two").build());
+               authorUuidStringRepository.save(AuthorUuidString.builder().firstName("Author_Two").lastName("Two").build());
        assertThat(authorUuidString).isNotNull();
        assertThat(authorUuidString.getId()).isNotNull();
 
@@ -59,12 +63,23 @@ public class SpringBootJpaMysqlTest {
     void testSaveAuthorUuidBinary(){
 
         AuthorUuidBinary authorUuidBinary =
-                authorUuidBinaryRepository.save(AuthorUuidBinary.builder().firstName("Author").lastName("Two").build());
+                authorUuidBinaryRepository.save(AuthorUuidBinary.builder().firstName("Author_Two").lastName("Two").build());
         assertThat(authorUuidBinary).isNotNull();
         assertThat(authorUuidBinary.getId()).isNotNull();
 
         AuthorUuidBinary authorUuidBinaryFromDb = authorUuidBinaryRepository.getReferenceById(authorUuidBinary.getId());
         assertThat(authorUuidBinaryFromDb).isNotNull();
+
+    }
+
+    @Order(3)
+    @Test
+    void testSaveAuthorNaturalKey(){
+
+        AuthorNaturalKey authorNaturalKey =
+                authorNaturalKeyRepository.save(AuthorNaturalKey.builder().firstName("Author_Two").lastName("Two").build());
+        AuthorNaturalKey authorNaturalKeyFromDb = authorNaturalKeyRepository.getReferenceById(authorNaturalKey.getFirstName());
+        assertThat(authorNaturalKeyFromDb).isNotNull();
 
     }
 

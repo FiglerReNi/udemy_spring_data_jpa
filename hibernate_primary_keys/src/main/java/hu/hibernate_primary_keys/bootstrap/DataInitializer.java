@@ -1,9 +1,11 @@
 package hu.hibernate_primary_keys.bootstrap;
 
 import hu.hibernate_primary_keys.domain.Author;
+import hu.hibernate_primary_keys.domain.AuthorNaturalKey;
 import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.Book;
+import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
@@ -21,6 +23,7 @@ public class DataInitializer implements CommandLineRunner {
     private AuthorRepository authorRepository;
     private AuthorUuidStringRepository authorUuidStringRepository;
     private AuthorUuidBinaryRepository authorUuidBinaryRepository;
+    private AuthorNaturalKeyRepository authorNaturalKeyRepository;
 
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
@@ -37,6 +40,10 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     public void setAuthorUuidBinaryRepository(AuthorUuidBinaryRepository authorUuidBinaryRepository) {
         this.authorUuidBinaryRepository = authorUuidBinaryRepository;
+    }
+    @Autowired
+    public void setAuthorNaturalKeyRepository(AuthorNaturalKeyRepository authorNaturalKeyRepository) {
+        this.authorNaturalKeyRepository = authorNaturalKeyRepository;
     }
 
     @Override
@@ -77,5 +84,10 @@ public class DataInitializer implements CommandLineRunner {
         AuthorUuidBinary authorUuidBinary = AuthorUuidBinary.builder().firstName("Author").lastName("One").build();
         AuthorUuidBinary savedAuthorUuidBinary = authorUuidBinaryRepository.save(authorUuidBinary);
         System.out.println(savedAuthorUuidBinary.getId());
+
+        AuthorNaturalKey authorNaturalKey = AuthorNaturalKey.builder().firstName("Author").lastName("One").build();
+        AuthorNaturalKey savedAuthorNaturalKey = authorNaturalKeyRepository.save(authorNaturalKey);
+        String savedAuthorId = savedAuthorNaturalKey.getFirstName();
+        System.out.println(authorNaturalKeyRepository.existsById(savedAuthorId));
     }
 }
