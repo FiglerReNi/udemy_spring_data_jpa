@@ -25,4 +25,6 @@ Natural Key:
   Nem jó gyakorlat, maximum kis adatbázisnál lehet jó megoldás, ha csak keresünk az adott táblában. Régebbi rendszereknél fordul még elő.
   Mindig meg kell adni a primary key-t mentés előtt, a többi változatnál meg lehetett mondani a hibernate-nek, hogy generálja magától.
 
+Composite Key:
+  A primary key nem külön id mező, hanem két vagy több meglévő mező kombinációja. A mezőknek együtt kell unique-nak lenniük.
 

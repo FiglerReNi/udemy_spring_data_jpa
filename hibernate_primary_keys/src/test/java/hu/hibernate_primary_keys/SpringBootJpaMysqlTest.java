@@ -5,6 +5,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import hu.hibernate_primary_keys.domain.AuthorNaturalKey;
 import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
+import hu.hibernate_primary_keys.domain.composite.AuthorCompositeKey;
+import hu.hibernate_primary_keys.domain.composite.FirstNameAndLastName;
+import hu.hibernate_primary_keys.repository.AuthorCompositeRepository;
 import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
@@ -34,6 +37,8 @@ public class SpringBootJpaMysqlTest {
     AuthorUuidBinaryRepository authorUuidBinaryRepository;
     @Autowired
     AuthorNaturalKeyRepository authorNaturalKeyRepository;
+    @Autowired
+    AuthorCompositeRepository authorCompositeRepository;
 
     @Order(1)
     @Test
@@ -80,6 +85,16 @@ public class SpringBootJpaMysqlTest {
                 authorNaturalKeyRepository.save(AuthorNaturalKey.builder().firstName("Author_Two").lastName("Two").build());
         AuthorNaturalKey authorNaturalKeyFromDb = authorNaturalKeyRepository.getReferenceById(authorNaturalKey.getFirstName());
         assertThat(authorNaturalKeyFromDb).isNotNull();
+
+    }
+
+    @Order(4)
+    @Test
+    void testSaveAuthorCompositeKey(){
+        FirstNameAndLastName firstNameAndLastName = FirstNameAndLastName.builder().firstName("Author_Two").lastName("Two").build();
+        authorCompositeRepository.save(AuthorCompositeKey.builder().firstName(firstNameAndLastName.getFirstName()).lastName(firstNameAndLastName.getLastName()).build());
+        AuthorCompositeKey authorCompositeKeyFromDb = authorCompositeRepository.getReferenceById(firstNameAndLastName);
+        assertThat(authorCompositeKeyFromDb).isNotNull();
 
     }
 

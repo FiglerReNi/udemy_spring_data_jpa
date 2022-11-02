@@ -5,6 +5,9 @@ import hu.hibernate_primary_keys.domain.AuthorNaturalKey;
 import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.Book;
+import hu.hibernate_primary_keys.domain.composite.AuthorCompositeKey;
+import hu.hibernate_primary_keys.domain.composite.FirstNameAndLastName;
+import hu.hibernate_primary_keys.repository.AuthorCompositeRepository;
 import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
@@ -24,6 +27,7 @@ public class DataInitializer implements CommandLineRunner {
     private AuthorUuidStringRepository authorUuidStringRepository;
     private AuthorUuidBinaryRepository authorUuidBinaryRepository;
     private AuthorNaturalKeyRepository authorNaturalKeyRepository;
+    private AuthorCompositeRepository authorCompositeRepository;
 
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
@@ -44,6 +48,10 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     public void setAuthorNaturalKeyRepository(AuthorNaturalKeyRepository authorNaturalKeyRepository) {
         this.authorNaturalKeyRepository = authorNaturalKeyRepository;
+    }
+    @Autowired
+    public void setAuthorCompositeRepository(AuthorCompositeRepository authorCompositeRepository) {
+        this.authorCompositeRepository = authorCompositeRepository;
     }
 
     @Override
@@ -87,7 +95,13 @@ public class DataInitializer implements CommandLineRunner {
 
         AuthorNaturalKey authorNaturalKey = AuthorNaturalKey.builder().firstName("Author").lastName("One").build();
         AuthorNaturalKey savedAuthorNaturalKey = authorNaturalKeyRepository.save(authorNaturalKey);
-        String savedAuthorId = savedAuthorNaturalKey.getFirstName();
-        System.out.println(authorNaturalKeyRepository.existsById(savedAuthorId));
+        String savedAuthorIdNatural = savedAuthorNaturalKey.getFirstName();
+        System.out.println(authorNaturalKeyRepository.existsById(savedAuthorIdNatural));
+
+        FirstNameAndLastName firstNameAndLastName = FirstNameAndLastName.builder().firstName("Author").lastName("One").build();
+        AuthorCompositeKey authorCompositeKey =
+                AuthorCompositeKey.builder().firstName(firstNameAndLastName.getFirstName()).lastName(firstNameAndLastName.getLastName()).build();
+        authorCompositeRepository.save(authorCompositeKey);
+        System.out.println(authorCompositeRepository.existsById(firstNameAndLastName));
     }
 }
