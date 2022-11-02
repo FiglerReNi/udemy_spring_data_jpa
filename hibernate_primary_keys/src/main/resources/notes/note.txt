@@ -18,6 +18,11 @@ UUID:
       SELECT HEX(id) FROM author_uuid_binary;
 
 @Column annotáció:
-  Ha nem a jpa csinálja az adatbázist, akkor ez arra jó, hogy amikor kiolvasunk az adatot, a hibernate jobban tudja a matchet megcsinálni az entityvel.
+  Ha nem a jpa csinálja az adatbázist, akkor ez arra jó, hogy amikor kiolvassuk az adatot, a hibernate jobban tudja a matchet megcsinálni az entityvel.
+
+Natural Key:
+  Amikor nem csinálunk külön id mezőt a táblának, hanem valamelyik meglévő mezőt választjuk ki primary key-nek.
+  Nem jó gyakorlat, maximum kis adatbázisnál lehet jó megoldás, ha csak keresünk az adott táblában. Régebbi rendszereknél fordul még elő.
+  Mindig meg kell adni a primary key-t mentés előtt, a többi változatnál meg lehetett mondani a hibernate-nek, hogy generálja magától.
 
 
