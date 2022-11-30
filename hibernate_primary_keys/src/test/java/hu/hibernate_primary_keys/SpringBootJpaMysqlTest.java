@@ -81,7 +81,7 @@ public class SpringBootJpaMysqlTest {
 
     }
 
-    @Order(3)
+    @Order(4)
     @Test
     void testSaveAuthorNaturalKey(){
 
@@ -92,7 +92,7 @@ public class SpringBootJpaMysqlTest {
 
     }
 
-    @Order(4)
+    @Order(5)
     @Test
     void testSaveAuthorCompositeKey(){
         FirstNameAndLastName firstNameAndLastName = FirstNameAndLastName.builder().firstName("Author_Two").lastName("Two").build();
@@ -102,7 +102,7 @@ public class SpringBootJpaMysqlTest {
 
     }
 
-    @Order(5)
+    @Order(6)
     @Test
     void testSaveAuthorEmbeddedCompositeKey(){
         FirstNameAndLastName firstNameAndLastName = FirstNameAndLastName.builder().firstName("Author_Two").lastName("Two").build();
