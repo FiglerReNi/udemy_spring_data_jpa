@@ -6,8 +6,10 @@ import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.Book;
 import hu.hibernate_primary_keys.domain.composite.AuthorCompositeKey;
+import hu.hibernate_primary_keys.domain.composite.AuthorEmbeddedCompositeKey;
 import hu.hibernate_primary_keys.domain.composite.FirstNameAndLastName;
 import hu.hibernate_primary_keys.repository.AuthorCompositeRepository;
+import hu.hibernate_primary_keys.repository.AuthorEmbeddedCompositeRepository;
 import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
@@ -28,7 +30,7 @@ public class DataInitializer implements CommandLineRunner {
     private AuthorUuidBinaryRepository authorUuidBinaryRepository;
     private AuthorNaturalKeyRepository authorNaturalKeyRepository;
     private AuthorCompositeRepository authorCompositeRepository;
-
+    private AuthorEmbeddedCompositeRepository authorEmbeddedCompositeRepository;
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -52,6 +54,11 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     public void setAuthorCompositeRepository(AuthorCompositeRepository authorCompositeRepository) {
         this.authorCompositeRepository = authorCompositeRepository;
+    }
+    @Autowired
+    public void setAuthorEmbeddedCompositeRepository(
+            AuthorEmbeddedCompositeRepository authorEmbeddedCompositeRepository) {
+        this.authorEmbeddedCompositeRepository = authorEmbeddedCompositeRepository;
     }
 
     @Override
@@ -103,5 +110,10 @@ public class DataInitializer implements CommandLineRunner {
                 AuthorCompositeKey.builder().firstName(firstNameAndLastName.getFirstName()).lastName(firstNameAndLastName.getLastName()).build();
         authorCompositeRepository.save(authorCompositeKey);
         System.out.println(authorCompositeRepository.existsById(firstNameAndLastName));
+
+        AuthorEmbeddedCompositeKey authorEmbeddedCompositeKey =
+                AuthorEmbeddedCompositeKey.builder().firstNameAndLastName(firstNameAndLastName).build();
+        authorEmbeddedCompositeRepository.save(authorEmbeddedCompositeKey);
+        System.out.println(authorEmbeddedCompositeRepository.existsById(firstNameAndLastName));
     }
 }

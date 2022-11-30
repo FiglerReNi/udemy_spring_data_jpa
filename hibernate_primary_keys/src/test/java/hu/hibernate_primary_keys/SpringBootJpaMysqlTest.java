@@ -6,8 +6,10 @@ import hu.hibernate_primary_keys.domain.AuthorNaturalKey;
 import hu.hibernate_primary_keys.domain.AuthorUuidBinary;
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
 import hu.hibernate_primary_keys.domain.composite.AuthorCompositeKey;
+import hu.hibernate_primary_keys.domain.composite.AuthorEmbeddedCompositeKey;
 import hu.hibernate_primary_keys.domain.composite.FirstNameAndLastName;
 import hu.hibernate_primary_keys.repository.AuthorCompositeRepository;
+import hu.hibernate_primary_keys.repository.AuthorEmbeddedCompositeRepository;
 import hu.hibernate_primary_keys.repository.AuthorNaturalKeyRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidBinaryRepository;
 import hu.hibernate_primary_keys.repository.AuthorUuidStringRepository;
@@ -39,6 +41,8 @@ public class SpringBootJpaMysqlTest {
     AuthorNaturalKeyRepository authorNaturalKeyRepository;
     @Autowired
     AuthorCompositeRepository authorCompositeRepository;
+    @Autowired
+    AuthorEmbeddedCompositeRepository authorEmbeddedCompositeRepository;
 
     @Order(1)
     @Test
@@ -95,6 +99,17 @@ public class SpringBootJpaMysqlTest {
         authorCompositeRepository.save(AuthorCompositeKey.builder().firstName(firstNameAndLastName.getFirstName()).lastName(firstNameAndLastName.getLastName()).build());
         AuthorCompositeKey authorCompositeKeyFromDb = authorCompositeRepository.getReferenceById(firstNameAndLastName);
         assertThat(authorCompositeKeyFromDb).isNotNull();
+
+    }
+
+    @Order(5)
+    @Test
+    void testSaveAuthorEmbeddedCompositeKey(){
+        FirstNameAndLastName firstNameAndLastName = FirstNameAndLastName.builder().firstName("Author_Two").lastName("Two").build();
+        authorEmbeddedCompositeRepository.save(AuthorEmbeddedCompositeKey.builder().firstNameAndLastName(firstNameAndLastName).build());
+        AuthorEmbeddedCompositeKey authorEmbeddedCompositeKeyFromDb =
+                authorEmbeddedCompositeRepository.getReferenceById(firstNameAndLastName);
+        assertThat(authorEmbeddedCompositeKeyFromDb).isNotNull();
 
     }
 

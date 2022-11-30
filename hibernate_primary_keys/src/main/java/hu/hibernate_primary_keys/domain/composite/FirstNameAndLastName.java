@@ -1,6 +1,7 @@
 package hu.hibernate_primary_keys.domain.composite;
 
 import hu.hibernate_primary_keys.domain.AuthorUuidString;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Embeddable
 public class FirstNameAndLastName implements Serializable {
 
     private String firstName;
