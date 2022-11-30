@@ -27,4 +27,7 @@ Natural Key:
 
 Composite Key:
   A primary key nem külön id mező, hanem két vagy több meglévő mező kombinációja. A mezőknek együtt kell unique-nak lenniük.
+  Kétféle módszer szerint lehet ilyet a JPA-ban definiálni, ahogy a composite folderben látszik a két példa:
+    AuthorCompositeKey
+    AuthorEmbeddedCompositeKey - ez objektum orientáltam és szebb megoldás
 
